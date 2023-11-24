@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 CREATE TABLE IF NOT EXISTS public.samples
 (
     id integer GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 ),
@@ -6,7 +5,6 @@ CREATE TABLE IF NOT EXISTS public.samples
     PRIMARY KEY (id),
     CONSTRAINT type_uq UNIQUE (type)
 );
-=======
 CREATE TABLE IF NOT EXISTS public.users
 (
     id integer GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 ),
@@ -15,4 +13,3 @@ CREATE TABLE IF NOT EXISTS public.users
     CONSTRAINT username_uq UNIQUE (username)
 );
 
->>>>>>> develop

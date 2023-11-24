@@ -13,11 +13,17 @@ exports.Api = void 0;
 const express_1 = require("express");
 const typedi_1 = require("typedi");
 const sample_controller_1 = require("../../app/sample/sample.controller");
+const user_controller_1 = require("../../app/user/user.controller");
 let Api = class Api {
-    constructor(sampleControler) {
-        this.sampleControler = sampleControler;
+    constructor(controller) {
+        this.controller = controller;
         this.apiRouter = (0, express_1.Router)();
-        this.apiRouter.use('/samples', this.sampleControler.router());
+        if (this.controller instanceof sample_controller_1.SampleController) {
+            this.apiRouter.use('/samples', this.controller.router());
+        }
+        else if (this.controller instanceof user_controller_1.UserController) {
+            this.apiRouter.use('/users', this.controller.router());
+        }
     }
     getApiRouter() {
         return this.apiRouter;
@@ -26,5 +32,5 @@ let Api = class Api {
 exports.Api = Api;
 exports.Api = Api = __decorate([
     (0, typedi_1.Service)(),
-    __metadata("design:paramtypes", [sample_controller_1.SampleController])
+    __metadata("design:paramtypes", [Object])
 ], Api);
